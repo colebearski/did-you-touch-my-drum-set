@@ -2,11 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>JS Drum Kit</title>
+  <title>JS Drum Session</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
 
   <div class="keys">
 
@@ -68,10 +67,12 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
-  // addEventListener(type, listener[, options])
+
+  // function to grab sound element and data key 
 
   function playSound(element) {
-      // document.querySelector(selectors)
+      
+      // document.querySelector(selectors) | ES6 with data key attributes
 
       const audio = document.querySelector(`audio[data-key="${element.keyCode}"]`);
 
@@ -83,9 +84,14 @@
 
       audio.play();
 
+      // classList accesses an elements list of classes
+      // .add then plugs the class
+      // jquery would be add classname...
       key.classList.add('playing');
 
   }
+
+  // function to remove css transition
 
   function removeTransition(element) {
 
@@ -95,9 +101,13 @@
 
   }
 
-  const keys = document.querySelectorAll('.key');
+  const keys = document.querySelectorAll('.key'); // key class
+
+  // forEach executes a function once for each array element
 
   keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+
+  // addEventListener(type, listener[, options])
 
   window.addEventListener('keydown', playSound);
 
@@ -110,23 +120,11 @@
     3. Listening for Transitions
     4. Listening for Events
     5. Listening for Animation End Events
+
+  Thanks Wes Bos!
   */
 
-
-
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
 
 </body>
 </html>
